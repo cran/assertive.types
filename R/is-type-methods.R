@@ -23,3 +23,27 @@ is_class <- function(x, .xname = get_name_in_parent(x))
   x <- coerce_to(x, "character")
   bapply(x, methods::isClass)
 }
+
+#' @importFrom methods is
+#' @rdname is_s4
+#' @export
+is_ref_class_generator <- function(x, .xname = get_name_in_parent(x))
+{
+  if(!is(x, "refObjectGenerator"))
+  {
+    return(false(gettext("%s is not a reference class generator."), .xname))
+  }
+  TRUE
+}
+
+#' @importFrom methods is
+#' @rdname is_s4
+#' @export
+is_ref_class_object <- function(x, .xname = get_name_in_parent(x))
+{
+  if(!is(x, "envRefClass"))
+  {
+    return(false(gettext("%s is not a reference class object."), .xname))
+  }
+  TRUE
+}

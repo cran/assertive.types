@@ -2,12 +2,18 @@
 % Please edit documentation in R/assert-is-type-base.R, R/is-type-base.R
 \name{assert_is_list}
 \alias{assert_is_list}
+\alias{assert_is_pairlist}
 \alias{is_list}
+\alias{is_pairlist}
 \title{Is the input a list?}
 \usage{
 assert_is_list(x, severity = getOption("assertive.severity", "stop"))
 
+assert_is_pairlist(x, severity = getOption("assertive.severity", "stop"))
+
 is_list(x, .xname = get_name_in_parent(x))
+
+is_pairlist(x, .xname = get_name_in_parent(x))
 }
 \arguments{
 \item{x}{Input to check.}
@@ -26,8 +32,12 @@ Checks to see if the input is a list.
 }
 \examples{
 assert_is_list(list(1,2,3))
+assert_is_pairlist(.Options)
 #These examples should fail.
-assertive.base::dont_stop(assert_is_list(1:10))
+assertive.base::dont_stop({
+  assert_is_list(1:10)
+  assert_is_pairlist(options())
+})
 }
 \seealso{
 \code{\link[base]{is.list}}.

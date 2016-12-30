@@ -154,6 +154,19 @@ assert_is_expression <- function(x,
   )
 }
 
+#' @rdname is_externalptr
+#' @export
+assert_is_externalptr <- function(x, 
+  severity = getOption("assertive.severity", "stop"))
+{                                                         
+  assert_engine(
+    is_externalptr, 
+    x, 
+    .xname = get_name_in_parent(x),
+    severity = severity
+  )
+}
+
 #' @rdname is_factor
 #' @export
 assert_is_factor <- function(x, 
@@ -278,6 +291,19 @@ assert_is_ordered <- function(x,
 {                                                         
   assert_engine(
     is_ordered, 
+    x, 
+    .xname = get_name_in_parent(x),
+    severity = severity
+  )
+}
+
+#' @rdname is_list
+#' @export
+assert_is_pairlist <- function(x, 
+  severity = getOption("assertive.severity", "stop"))
+{                                                         
+  assert_engine(
+    is_pairlist, 
     x, 
     .xname = get_name_in_parent(x),
     severity = severity
